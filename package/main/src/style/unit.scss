@@ -1,0 +1,62 @@
+@use 'sass:map';
+
+// display
+.d {
+  $display-maps: (
+    b: block,
+    i: inline,
+    ib: inline-block,
+  ) !default;
+
+  @each $key, $value in $display-maps {
+    &#{$key} {
+      display: $value;
+    }
+  }
+}
+
+// text-align
+.tg {
+  $text-align-maps: (
+    l: left,
+    c: center,
+    r: right,
+  ) !default;
+
+  @each $key, $value in $text-align-maps {
+    &-#{$key} {
+      text-align: $value;
+    }
+  }
+}
+
+$box-types: (
+  m: margin,
+  p: padding,
+);
+$direction-maps: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+);
+$size-maps: (
+  m: $margin-sizes,
+  p: $padding-sizes,
+);
+
+@each $box-abbr, $box-full in $box-types {
+  $sizes: map.get($size-maps, $box-abbr);
+
+  @each $size-abbr, $size in $sizes {
+    .#{$box-abbr}-#{$size-abbr} {
+      #{$box-full}: $size;
+    }
+
+    @each $direction-abbr, $direction-full in $direction-maps {
+      .#{$box-abbr}#{$direction-abbr}-#{$size-abbr} {
+        #{$box-full}-#{$direction-full }: $size;
+      }
+    }
+  }
+}

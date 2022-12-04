@@ -1,0 +1,11 @@
+{
+  "stylelint.snippet": ["css", "less", "postcss", "vue", "scss"],
+  "stylelint.validate": ["css", "less", "postcss", "vue", "scss"],
+  "editor.formatOnSave": true,
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}
